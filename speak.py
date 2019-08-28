@@ -22,16 +22,11 @@ def getPage(url):
 	return(soup.find(class_='Deck').get_text())
 
 def speak(text):
-	# os.system("gtts-cli %s" % text)
 	tts = gTTS(text=text, lang='sv')
 	tts.save("out.mp3")
-	# to start the file from python
-	# os.system("vlc out.mp3")
+
 	os.system("open out.mp3")
 	time.sleep(15)
 
 for link in getArticles(int(sys.argv[1])):
 	speak(getPage(BASE_URl+link))
-	# print(BASE_URl+link)
-
-# speak(getPage(sys.argv[1]))
